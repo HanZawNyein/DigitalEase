@@ -15,3 +15,8 @@ def create_user(user: DeUserCreate, db: Session = Depends(get_db)):
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     return de_user_service.create_user(db=db, user=user)
+
+@router.get("/users/", response_model=list[DeUser])
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    users = de_user_service.get_users(db, skip=skip, limit=limit)
+    return users
