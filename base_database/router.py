@@ -1,10 +1,12 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
-from typing import Type, Generic, List, TypeVar
-from pydantic import BaseModel
+from typing import Type, Generic, List
 
-from .services import CRUDGeneric, ModelType, CreateSchemaType, UpdateSchemaType
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
+from sqlalchemy.orm import Session
+
 from .middleware import get_db
+from .services import CRUDGeneric, ModelType, CreateSchemaType, UpdateSchemaType
+
 
 class CRUDRouter(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     model: Type[ModelType]

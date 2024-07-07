@@ -1,12 +1,10 @@
 from fastapi import FastAPI, Request, Response
 
 from base import router
-from base_database.database import BaseModel, engine, SessionLocal
-
+from base_auth.app import app as base_auth
 # sub apps
 from base_database.app import app as base_database
-from base_auth.app import app as base_auth
-
+from base_database.database import BaseModel, engine, SessionLocal
 
 BaseModel.metadata.create_all(bind=engine)
 

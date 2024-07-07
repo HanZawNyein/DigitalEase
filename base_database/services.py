@@ -1,6 +1,7 @@
-from sqlalchemy.orm import Session
 from typing import TypeVar, Generic, List, Optional, Type
+
 from pydantic import BaseModel
+from sqlalchemy.orm import Session
 
 # Define type variables
 ModelType = TypeVar('ModelType')
