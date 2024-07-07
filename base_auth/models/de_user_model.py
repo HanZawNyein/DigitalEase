@@ -1,6 +1,6 @@
 from sqlalchemy import Boolean, Column, Integer, String
 
-from base_databse.database import BaseModel
+from base_database.database import BaseModel
 
 
 class DeUserModel(BaseModel):
