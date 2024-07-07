@@ -1,13 +1,11 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+from base import router
+from base_databse import app as db_app
+from servers import servers
 
+app = FastAPI(debug=True, servers=servers)
+app.include_router(router)
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+# sub apps
+app.mount('/database', db_app)
