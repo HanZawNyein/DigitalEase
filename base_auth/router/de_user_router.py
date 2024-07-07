@@ -17,7 +17,7 @@ class DeUserRouter(CRUDRouter):
     # Example of overriding a method
     async def create_object(self, obj_in: CreateSchemaType, db: Session = Depends(get_db)):
         obj_in.password = self.hash_password(obj_in.password)  # Example of custom logic
-        return await super().create_object(obj_in, db)
+        return await super(DeUserRouter, self).create_object(obj_in, db)
 
     def hash_password(self, password: str) -> str:
         # Implement password hashing here

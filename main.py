@@ -1,9 +1,9 @@
 from fastapi import FastAPI, Request, Response
 
 from base import router
-from base_auth.app import app as base_auth
 # sub apps
-from base_database.app import app as base_database
+from base_auth import app as base_auth
+# from base_database.app import app as base_database
 from base_database.database import BaseModel, engine, SessionLocal
 
 BaseModel.metadata.create_all(bind=engine)
@@ -27,5 +27,5 @@ async def db_session_middleware(request: Request, call_next):
 app.include_router(router)
 
 # sub apps
-app.mount('/database', base_database)
+# app.mount('/database', base_database)
 app.mount('/auth', base_auth)
